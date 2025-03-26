@@ -12,29 +12,19 @@
 </head>
 <body>
     <header>
-        <h1>Användardata från API</h1>
-        <nav>
-        </nav>
+        <h1>Användarinformation</h1>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
+            <button type="submit">Sök</button>
+        </form>
+        <button id="random-user-button">Slumpmässig användare</button>
     </header>
-
     <main>
-        <section id="user-list">
-            <article class="user-card">
-                <h2>Användardata</h2>
-                <p>Namn (Användarens namn): </p>
-                <p>Användarnamn: </p>
-                <p>E-post: </p>
-                <button class="details-button">Visa mer information</button>
-                <div class="user-details">
-                    <p>Stad:</p>
-                    <p>Telefon:</p>
-                    <p>Företagsnamn:</p>
-                </div>
-            </article>
-        </section>
+        <section id="user-list"></section>
     </main>
-
     <footer>
+        <p>&copy; 2024 Användardata</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
