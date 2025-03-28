@@ -8,22 +8,33 @@
 
     <script src="./script.js" defer></script>
 
-    <title>Document</title>
+    <title>Omnivision | Övervakningssystem</title>
 </head>
 <body>
     <header>
-        <h1>Användarinformation</h1>
-        <form id="search-form">
-            <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
-            <button type="submit">Sök</button>
-        </form>
-        <button id="random-user-button">Slumpmässig användare</button>
+        <nav>
+            <a href="./index.html"><h1>⏿ Omnivision – Övervakningssystem ⏿</h1></a>
+        </nav>
     </header>
     <main>
-        <section id="user-list"></section>
+        <section class="user-search-container">
+            <h2>Sök invånare</h2>
+            <div class="search-controls">
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
+                    <button type="submit">Sök</button>
+                </form>
+                <button id="random-user-button">Slumpmässig invånare</button>
+                <button id="show-all-users-button">Visa alla invånare</button>
+            </div>
+            
+        </section>
+
+        <section id="user-list">
+        </section>
     </main>
     <footer>
-        <p>&copy; 2024 Användardata</p>
+        <p>&copy; <span id="current-year"></span> José Raúl Tenza Ramírez</p>
     </footer>
     <script src="script.js"></script>
 </body>
