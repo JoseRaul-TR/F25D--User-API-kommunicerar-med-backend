@@ -5,12 +5,37 @@
 }
 
 body{
-    background:linear-gradient(45deg,#640101,#0d0000, #341CFF);
+    background:linear-gradient(67deg,#000000, #550101,#000000, #2816c8, #000000);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 100vw;
     min-height: 100vh;
     color: #fff;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    background-size: 800% 800%;
+    animation: gradientAnimation 20s ease-in-out infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    20% {
+        background-position: 20% 50%;
+    }
+    40% {
+        background-position: 40% 50%;
+    }
+    60% {
+        background-position: 60% 50%;
+    }
+    80% {
+        background-position: 80% 50%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
 }
 
 header {
@@ -19,7 +44,6 @@ header {
     backdrop-filter: blur(20px);
     color: #fff;
     text-align: center;
-    box-shadow: ; /* Finish heaader box shadow */
 }
 
 header nav a {
@@ -40,28 +64,64 @@ header nav h1:hover {
     color: #880202;
 }
 
-.search-controls {
+.user-search-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 50px;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
 }
 
-.search-form > input {
+.user-search-container h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.search-controls,
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.search-controls {
+    flex-direction: row;
+}
+
+#search-form input[type="text"] {
     padding: 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
-    width: 300px;
+    width: fit-content;
+    min-width: 252px;
+    margin-right: 10px;
 }
 
-.search-form > input::placeholder {
+#search-form input[type="text"]::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.button-group {
+
+button {
+    background-color: #003cff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #341CFF;
+}
+
+.button-group,
+.button-row {
     display: flex;
     gap: 10px;
 }
@@ -82,17 +142,27 @@ main {
     width: 100%;
 }
 
+#user-list .user-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
 .user-card {
+    width: fit-content;
+    min-width: 250px;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.9); 
+    background-color: #fff; 
     color: #333;
     transition: transform 0.3s ease;
-    width: 300px;
-    height: 250px;
     display: flex;
     flex-direction: column;
+    height: auto;
+    min-height: 250px;
 }
 
 .user-card:hover {
@@ -100,7 +170,7 @@ main {
 }
 
 .user-card button {
-    background-color: #007bff;
+    background-color: #003cff;
     color: #fff;
     border: none;
     padding: 0.75rem 1.25rem;
@@ -127,16 +197,63 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
+    margin-top: auto;
 }
 
 /* Responsiv design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     main {
         padding: 1rem;
+    }
+
+    .search-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #search-form input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    #search-form button {
+        width: 100%;
+    }
+
+    .button-group, 
+    .button-row {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .button-group button, 
+    .button-row button {
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+/* Dark theme styles */
+@media (prefers-color-scheme: dark) {
+
+    .user-card {
+        background-color: rgba(30, 30, 30, 0.9); 
+        color: #e0e0e0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    button {
+        color:#e0e0e0 ; 
+    }
+
+    .user-details {
+        border-top: 1px solid #333; /* Darker border */
     }
 }
 
 /* Notes:
-
-– Improve style for wide screens in user-search-container and user-list
+– Improve layout off user cards when all are displayed
 */
