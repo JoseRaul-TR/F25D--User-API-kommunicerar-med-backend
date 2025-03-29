@@ -17,12 +17,14 @@
         </nav>
     </header>
     <main>
+
         <section class="user-search-container">
             <h2>Sök invånare</h2>
             <div class="search-controls">
                 <form id="search-form">
                     <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
                     <button type="submit">Sök</button>
+                    <button type="button" id="clear-search-button">Rensa sökningen</button>
                 </form>
             </div>
             <div class="button-row">
@@ -31,12 +33,18 @@
             </div>
         </section>
 
-        <section id="user-list">
-        </section>
+        <section id="user-list"></section>
+
     </main>
     <footer>
+
+        <blockquote cite="https://en.wikipedia.org/wiki/Nineteen_Eighty-Four">
+            <p>"Big Brother is watching you"</p>
+            <cite>George Orwell, 1984</cite>
+        </blockquote>
+
         <p>&copy; <span id="current-year"></span> José Raúl Tenza Ramírez</p>
+
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>

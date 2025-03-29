@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     let allUsers = [];
     const userList = document.getElementById('user-list');
 
@@ -10,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setupSearchForm();
             setupRandomUserButton();
             setupShowAllUsersButton();
+            setupClearButton();
             setCurrentYear();
         } catch (error) {
             console.error('Error fetching users from API: ', error);
@@ -18,17 +20,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sets up the search form functionality
     function setupSearchForm() {
-        document.getElementById('search-form').addEventListener('submit', (event) => {
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+    
+        searchForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            const searchTerm = document.getElementById('search-input').value.toLowerCase();
-            const foundUser = allUsers.find(user => 
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            userList.innerHTML = ''; // Clean previous search
+
+            if (!searchTerm) { // Show a message if no search term is given
+                displayNotFoundMessage("Vänligen ange ett sökord.");
+                return;
+            }
+    
+            // Search user even if username is not complete
+            const foundUsers = allUsers.filter(user =>
                 user.username.toLowerCase().includes(searchTerm) || user.id.toString() === searchTerm
             );
-            displayUsers(foundUser ? [foundUser] : []);
-            removeNotFoundMessage();
-            if (!foundUser) {
-                alert('Invånare hittades inte.');
-            }
+    
+            foundUsers.length ? displayUsers(foundUsers) : displayNotFoundMessage("Invånare hittades inte.");
+        });
+    }
+
+    // Function not found message
+    function displayNotFoundMessage(message) {
+        userList.innerHTML = `<p id="not-found-message">${message}</p>`;
+    }
+
+    // Function clear search button
+    function setupClearButton() {
+        const clearButton = document.getElementById('clear-search-button');
+
+        clearButton.addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+            userList.innerHTML = '';
         });
     }
 
@@ -57,31 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Creates a user card element for display
-function createUserCard(user) {
-    return `
-        <div class="user-card">
-            <p><strong>Namn:</strong> ${user.name}</p>
-            <p><strong>Användarnamn:</strong> ${user.username}</p>
-            <p><strong>E-post:</strong> ${user.email}</p>
-            <button class="details-button" data-user-id="${user.id}">Visa mer info</button>
-            <div class="user-details" id="details-${user.id}">
-                <p><strong>Stad:</strong> ${user.address.city}</p>
-                <p><strong>Telefon:</strong> ${user.phone}</p>
-                <p><strong>Företag:</strong> ${user.company.name}</p>
+    function createUserCard(user) {
+        return `
+            <div class="user-card">
+                <p><strong>Namn:</strong> ${user.name}</p>
+                <p><strong>Användarnamn:</strong> ${user.username}</p>
+                <p><strong>E-postadress:</strong> ${user.email}</p>
+                <button class="details-button" data-user-id="${user.id}">Visa mer info</button>
+                <div class="user-details" id="details-${user.id}">
+                    <p><strong>Stad:</strong> ${user.address.city}</p>
+                    <p><strong>Telefonnummer:</strong> ${user.phone}</p>
+                    <p><strong>Företagsnamn:</strong> ${user.company.name}</p>
+                </div>
             </div>
-        </div>
-    `;
-}
-
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('details-button')) {
-        const userId = event.target.dataset.userId;
-        const detailsDiv = document.getElementById(`details-${userId}`);
-        if (detailsDiv) {
-            detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
-        }
+        `;
     }
-});
+
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('details-button')) {
+            const userId = event.target.dataset.userId;
+            const detailsDiv = document.getElementById(`details-${userId}`);
+            if (detailsDiv) {
+                detailsDiv.classList.toggle('show');
+            }
+        }
+    });
 
     // Sets the current year in the footer
     function setCurrentYear() {
@@ -93,6 +118,3 @@ document.addEventListener('click', (event) => {
 
     fetchAndDisplayUsers();
 });
-
-/* Notes: 
-    - Keep working in button more-details to hide content on second click */
