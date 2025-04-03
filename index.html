@@ -8,33 +8,41 @@
 
     <script src="./script.js" defer></script>
 
-    <title>Document</title>
+    <title>Omnivision | Övervakningssystemet</title>
 </head>
 <body>
     <header>
-        <h1>Användardata från API</h1>
         <nav>
+            <a href="./index.html"><h1>⏿ Omnivisions övervakningssystem ⏿</h1></a>
         </nav>
     </header>
-
     <main>
-        <section id="user-list">
-            <article class="user-card">
-                <h2>Användardata</h2>
-                <p>Namn (Användarens namn): </p>
-                <p>Användarnamn: </p>
-                <p>E-post: </p>
-                <button class="details-button">Visa mer information</button>
-                <div class="user-details">
-                    <p>Stad:</p>
-                    <p>Telefon:</p>
-                    <p>Företagsnamn:</p>
-                </div>
-            </article>
-        </section>
-    </main>
 
+        <section class="user-search-container">
+            <h2>Sök invånare</h2>
+            <div class="search-controls">
+                <form id="search-form">
+                    <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
+                    <button type="submit">Sök</button>
+                </form>
+            </div>
+            <div class="button-row">
+                <button id="random-user-button">Slumpmässig invånare</button>
+                <button id="show-all-users-button">Visa alla invånare</button>
+            </div>
+            <button type="button" id="clear-search-button">Rensa sökningen</button>
+        </section>
+
+        <section id="user-list"></section>
+
+    </main>
     <footer>
+
+        <q>Big Brother is watching you</q>
+        <cite>George Orwell, 1984</cite>
+        <br>
+        <p>&copy; <span id="current-year"></span> José Raúl Tenza Ramírez</p>
+
     </footer>
 </body>
 </html>
