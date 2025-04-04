@@ -7,10 +7,10 @@ This is a website that fecth users from jsonplaceholder API (https://jsonplaceho
 
 The page has the following functions to show a user:
 
-– Search by userId or username.
+– Search by userId, username or email address.
 – Show a random user.
 – Show all users.
-– Clean search.
+– Clean search/displayed user.
 
 The following info is displayd on default for every user:
 – Name
