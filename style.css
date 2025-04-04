@@ -52,26 +52,20 @@ header nav h1:hover {
     color: #880202;
 }
 
-.user-search-container {
+.interaction-container {
     padding: 1rem 0;
     text-align: center;
 }
 
-.user-search-container h2 {
-    margin-bottom: 1rem;
-}
-
-.search-controls,
-.button-row {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
+.interaction-container h2 {
     margin-bottom: 1rem;
 }
 
 #search-form {
     display: flex;
+    justify-content: center;
     gap: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 #search-form input[type="text"] {
@@ -80,12 +74,19 @@ header nav h1:hover {
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
-    min-width: 252px;
+    min-width: 100%;
 }
 
 #search-form input[type="text"]::placeholder {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-row-1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
 }
 
 
@@ -95,16 +96,13 @@ button {
     border: none;
     padding: 0.75rem 1.25rem;
     cursor: pointer;
+    text-transform: uppercase;
     border-radius: 6px;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #341CFF;
-}
-
-main {
-    padding: 2rem;
 }
 
 #user-list {
@@ -180,18 +178,17 @@ footer {
 }
 
 footer blockquote {
-    margin: 1em 0; /* Add some margin around the quote */
-    padding-left: 1em; /* Indent the quote */
-    border-left: 2px solid #ccc; /* Add a left border for visual cue */
-    font-style: italic; /* Make the quote italic */
+    margin: 1em 0;
+    padding-left: 1em;
+    border-left: 2px solid #ccc;
+    font-style: italic;
 }
 
 footer cite {
-    display: block; /* Make the cite a block element */
-    font-style: normal; /* Make the cite normal font style */
+    display: block;
+    font-style: normal;
 }
 
-/* Responsiv design */
 @media (max-width: 768px) {
     main {
         padding: 1rem;
@@ -201,8 +198,6 @@ footer cite {
         font-size: 1.8rem;
     }
 
-    .search-controls,
-    .button-row,
     #search-form {
         flex-direction: column;
         align-items: center;
@@ -215,26 +210,27 @@ footer cite {
     }
 
     #search-form button,
-    .button-row button {
+    .btn-row-1 button,
+    .btn-row-2 {
         width: 100%;
     }
 }
 
-/* Dark theme styles */
 @media (prefers-color-scheme: dark) {
     .user-card {
-        background-color: rgba(30, 30, 30, 0.9); 
+        background-color: rgba(30, 30, 30, 0.9);
         color: #e0e0e0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .user-card button,
     #search-form button,
-    .button-row button {
+    .btn-row-1 button,
+    .btn-row-2 {
         color: #e0e0e0;
     }
 
     .user-details {
-        border-top: 1px solid #333; /* Darker border */
+        border-top: 1px solid #333;
     }
 }

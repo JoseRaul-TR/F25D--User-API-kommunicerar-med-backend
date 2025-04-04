@@ -18,19 +18,17 @@
     </header>
     <main>
 
-        <section class="user-search-container">
+        <section class="interaction-container">
             <h2>Sök invånare</h2>
-            <div class="search-controls">
-                <form id="search-form">
-                    <input type="text" id="search-input" placeholder="Sök efter userID eller användarnamn">
-                    <button type="submit">Sök</button>
-                </form>
-            </div>
-            <div class="button-row">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Ange userID, användarnamn eller e-post">
+                <button type="submit">Sök</button>
+            </form>
+            <div class="btn-row-1">
                 <button id="random-user-button">Slumpmässig invånare</button>
                 <button id="show-all-users-button">Visa alla invånare</button>
             </div>
-            <button type="button" id="clear-search-button">Rensa sökningen</button>
+            <button type="button" id="clear-search-button" class="btn-row-2">Rensa sökningen</button>
         </section>
 
         <section id="user-list"></section>

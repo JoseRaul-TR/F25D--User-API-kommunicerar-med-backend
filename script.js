@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
     
-            // Search user even if username is not complete
+            // Search user evafter id, username or email address, even if username and email address are not complete
             const foundUsers = allUsers.filter(user =>
-                user.username.toLowerCase().includes(searchTerm) || user.id.toString() === searchTerm
+                user.id.toString() === searchTerm || user.username.toLowerCase().includes(searchTerm) || user.email.toLowerCase().includes(searchTerm)
             );
     
             foundUsers.length ? displayUsers(foundUsers) : displayNotFoundMessage("Invånare hittades inte.");
