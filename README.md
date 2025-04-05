@@ -1,7 +1,6 @@
 # F25D–Upgift User API komunicerar med backdend #
 
-<img width="1470" alt="Captura de pantalla 2025-04-03 a las 10 32 40" src="https://github.com/user-attachments/assets/864799bd-129b-4ec9-82f7-31e618cddb3b" />
-
+<img width="1470" alt="Captura de pantalla 2025-04-03 a las 10 32 40" src="https://github.com/user-attachments/assets/a3b4cf40-d950-411c-a6eb-68aba8ee4b13" />
 
 This is a website that fecth users from jsonplaceholder API (https://jsonplaceholder.typicode.com/users).
 
